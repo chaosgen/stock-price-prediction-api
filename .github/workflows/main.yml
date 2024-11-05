@@ -11,6 +11,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: "."
     
     steps:
       - name: Checkout code
@@ -29,6 +31,9 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: "."
+      
     needs: build
     if: github.ref == 'refs/heads/main' # Deploy only on main branch
     steps:
